@@ -1,0 +1,46 @@
+<head>
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center">
+            <input id="searchInput" class="form-control w-50 ">
+            <button id="searchbtn" class="btn btn-dark ml-2">Search</button>
+            <div style="clear: both"></div>
+        </div>
+        <div id="row" class="mt-5">
+            <h2 class="mb-3"> Add Product</h2>
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" id="name" class="form-control">
+            </div>         
+            
+            <div class="form-group">
+                <label>Product Price</label>
+                <input type="text" id="price" class="form-control">
+            </div>     
+            
+            <div class="form-group">
+                <label>Product Company</label>
+                <input type="text" id="comp" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label>Product Description</label>
+                <textarea id="desc" style="resize: none" class="form-control"></textarea>
+            </div>
+        </div>
+        
+        <button id="btn" class="btn btn-success mb-5">Add</button> 
+        <button id="updatebtn" class="btn btn-warning mb-5">Update</button>
+    </div>
+    <div class="container">
+        <h2 class="mb-2">Products</h2>
+        <div class="row" id="products">
+        
+        </div>
+    </div>
+   
+        <script src="index.js"></script>
+</body>
