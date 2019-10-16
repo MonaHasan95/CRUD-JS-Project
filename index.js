@@ -76,18 +76,18 @@ searchbtn.onclick= function()
             cols=`
                 <h3 class="w-100">Search Result </h3>
                 <div class="col-3 py-3">
-                <div id="product" class="text-center bg-info">
-                    <img src="website-two-thumb.jpg" class="img-fluid">
-                    <h6>`+products[i].name+`</h6>
+                <div id="product" style=" border-radius: 5px;" class="text-center table-bordered">
+                    <img src="website-two-thumb.jpg" class="img-fluid" style=" border-top-right-radius: 5px; border-top-right-radius: 5px;">
+                    <h6 class="m-2">`+products[i].name+`</h6>
                     <p class="text-muted">`+products[i].desc+`</p>
                     <p class="text-warning">`+products[i].comp+`</p>
                     <p class="text-danger">`+products[i].price+`</p>
-                    <button onclick="deleteInput(`+i+`)" class="btn btn-danger ">Delete</button>
+                    <button onclick="deleteSearch(`+i+`)" class="btn btn-danger ">Delete</button>
                     <button onclick="editInput(`+i+`)" class="btn btn-primary id="editBtn">Edit</button>
                 </div>
             </div>`
             
-           document.getElementById("row").innerHTML=cols; 
+           document.getElementById("searchResults").innerHTML=cols; 
         }
         
     }
@@ -135,6 +135,12 @@ function deleteInput(ind)
     products.splice(ind,1);
     localStorage.setItem("products",JSON.stringify(products))
     displayProducts();
+}
+function deleteSearch(ind)
+{
+    deleteInput(ind);
+    document.getElementById("searchResults").innerHTML=''; 
+    
 }
 
 function editInput(ind)
