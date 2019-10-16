@@ -46,6 +46,26 @@ function addProduct()
 
 function updateProduct(ind)
 {
+    if(sClick==1)
+        {
+             var cols="";
+            cols=`
+                <h3 class="w-100">Search Result </h3>
+                <div class="col-3 py-3">
+                <div id="product" style=" border-radius: 5px;" class="text-center table-bordered">
+                    <img src="website-two-thumb.jpg" class="img-fluid" style=" border-top-right-radius: 5px; border-top-right-radius: 5px;">
+                    <h6 class="m-2">`+products[ind].name+`</h6>
+                    <p class="text-muted">`+products[ind].desc+`</p>
+                    <p class="text-warning">`+products[ind].comp+`</p>
+                    <p class="text-danger">`+products[ind].price+`</p>
+                    <button onclick="deleteSearch(`+ind+`)" class="btn btn-danger ">Delete</button>
+                    <button onclick="editInput(`+ind+`)" class="btn btn-primary id="editBtn">Edit</button>
+                </div>
+            </div>`
+            
+           document.getElementById("searchResults").innerHTML=cols; 
+        }
+    
     if(!isNaN(Number(priceInput.value)))
     {
         product ={name: nameInput.value, price: priceInput.value , comp: compInput.value, desc: descInput.value}; 
@@ -62,9 +82,10 @@ function updateProduct(ind)
     }
 }
 
-
+var sClick=0;
 searchbtn.onclick= function()
 {
+    sClick=1;
     var p="";
     for(var i=0; i<products.length; i++)
     {
@@ -140,6 +161,7 @@ function deleteInput(ind)
 }
 function deleteSearch(ind)
 {
+    sClick=0;
     deleteInput(ind);
     document.getElementById("searchResults").innerHTML=''; 
     
@@ -156,25 +178,6 @@ function editInput(ind)
     {
         updateProduct(ind);
         displayProducts();
-        if($("#searchResults").html()!=" ")
-        {
-             var cols="";
-            cols=`
-                <h3 class="w-100">Search Result </h3>
-                <div class="col-3 py-3">
-                <div id="product" style=" border-radius: 5px;" class="text-center table-bordered">
-                    <img src="website-two-thumb.jpg" class="img-fluid" style=" border-top-right-radius: 5px; border-top-right-radius: 5px;">
-                    <h6 class="m-2">`+products[ind].name+`</h6>
-                    <p class="text-muted">`+products[ind].desc+`</p>
-                    <p class="text-warning">`+products[ind].comp+`</p>
-                    <p class="text-danger">`+products[ind].price+`</p>
-                    <button onclick="deleteSearch(`+ind+`)" class="btn btn-danger ">Delete</button>
-                    <button onclick="editInput(`+ind+`)" class="btn btn-primary id="editBtn">Edit</button>
-                </div>
-            </div>`
-            
-           document.getElementById("searchResults").innerHTML=cols; 
-        }
         clearInput();
     }
 }
